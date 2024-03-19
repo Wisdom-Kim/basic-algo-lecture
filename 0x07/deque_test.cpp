@@ -6,27 +6,27 @@ int dat[2*MX+1];
 int head = MX, tail = MX;
 
 void push_front(int x){
-  
+  dat[--head]=x;
 }
 
 void push_back(int x){
-  
+  dat[tail++]=x;
 }
 
 void pop_front(){
-  
+    head++;
 }
 
 void pop_back(){
-  
+    tail--;
 }
 
 int front(){
-  
+  if(head!=tail) return dat[head];
 }
 
 int back(){
-  
+    if(head!=tail) return dat[tail-1];
 }
 
 void test(){

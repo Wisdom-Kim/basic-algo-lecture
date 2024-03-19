@@ -6,15 +6,15 @@ int dat[MX];
 int pos = 0;
 
 void push(int x){
-
+    dat[++pos]=x;
 }
 
 void pop(){
-
+    dat[pos--]=0;
 }
 
 int top(){
-
+    return dat[pos];
 }
 
 void test(){

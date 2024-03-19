@@ -1,7 +1,5 @@
-// Authored by : std-freejia
-// Co-authored by : BaaaaaaaaaaarkingDog
-// http://boj.kr/4b36ea477ba8433c9cf9d053a711e07b
-#include <bits/stdc++.h>
+#include <iostream>
+#include <queue>
 #define X first
 #define Y second
 using namespace std;
@@ -9,13 +7,13 @@ using namespace std;
 int n, maxcnt, maxlimit;
 int area[102][102];
 int vis[102][102]; // 비에 잠긴 영역
-int dx[] = {0, 1, 0, -1};
-int dy[] = {1, 0, -1, 0};
+int dx[4] = {0, 1, 0, -1};
+int dy[4] = {1, 0, -1, 0};
 
 void bfs(int i, int j, int limit){
   queue<pair<int,int>> q;
   vis[i][j] = 1; // 방문표시
-  q.push({i, j}); // 푸시
+  q.push({i, j});
   while(!q.empty()){
     auto cur = q.front(); q.pop();
 
@@ -25,7 +23,7 @@ void bfs(int i, int j, int limit){
 
       if(nx < 0 || nx >= n || ny < 0 || ny >= n) continue; // 정상 범위 체크
       if(vis[nx][ny] == 0 && area[nx][ny] > limit){  // 미방문, 침수되지 않음
-        vis[nx][ny] = 1;  // 첫 방문이라면 방문표시
+        vis[nx][ny] = 1;  //방문표시
         q.push({nx, ny}); // 푸시
       }
     }
@@ -45,13 +43,12 @@ int main(void) {
   }
 
   for(int limit = 0; limit <= maxlimit; limit++) {
-    for(int i = 0; i < n; i++)
-      fill(vis[i], vis[i]+n, 0); // 방문배열 초기화
+    for(int i = 0; i < n; i++) fill(vis[i], vis[i]+n, 0);
     
     int cnt = 0;
     for(int i = 0; i < n; i++) {
       for (int j = 0; j < n; j++) {
-        if (area[i][j] > limit && vis[i][j] == 0) { // 침수 여부, 방문 여부
+        if (area[i][j] > limit && vis[i][j] == 0) { //첫방문,침수 안함
           bfs(i, j, limit);
           cnt++;
         }

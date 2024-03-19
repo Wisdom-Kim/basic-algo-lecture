@@ -8,12 +8,15 @@ int tmp[1000001]; // merge 함수에서 리스트 2개를 합친 결과를 임�
 // mid = (st+en)/2라고 할 때 arr[st:mid], arr[mid:en]은 이미 정렬이 되어있는 상태일 때 arr[st:mid]와 arr[mid:en]을 합친다.
 void merge(int st, int en){
   int mid = (st+en)/2;
-  
+  int cnt = st+en ;
+  while(cnt--){
+      arr[st]< arr[mid] ? tmp[st]=arr[st++] : tmp[mid] = arr[mid++];
+  }
 }
 
 // arr[st:en]을 정렬하고 싶다.
 void merge_sort(int st, int en){
-  if(???????????) return; // 길이 1인 경우
+  if(st==en) return; // 길이 1인 경우
   int mid = (st+en)/2;
   merge_sort(st, mid); // arr[st:mid]을 정렬한다.
   merge_sort(mid, en); // arr[mid:en]을 정렬한다.

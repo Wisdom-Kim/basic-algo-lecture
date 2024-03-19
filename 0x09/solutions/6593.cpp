@@ -1,7 +1,10 @@
 // Authored by : yongjunleeme
 // Co-authored by : -
 // http://boj.kr/5c5193d29eee450394adefa11f8c8f23
-#include <bits/stdc++.h>
+#include <iostream>
+#include <tuple>
+#include <queue>
+
 using namespace std;
 const int MX = 31;
 int dx[6] = {0, 0, 1, -1, 0, 0};
